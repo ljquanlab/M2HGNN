@@ -1,7 +1,7 @@
 # Fusion-enhanced Graph Neural Network based on Heterogeneous Graph for Disease-Gene Association
 
 ## Introduction
-## FGNNHG ## is a novel multimodal fusion method based on heterogeneous graph to predict the disease-gene associations.
+FGNNHG is a novel multimodal fusion method based on heterogeneous graph to predict the disease-gene associations.
 
 ## Requirements
 - python=3.8.20
@@ -17,8 +17,7 @@
 - torch-spline-conv=1.2.2
 
 ## Qucik Start
-```bash
-python main.py
+`python main.py` 
 
 ## Data Description
 ./Dataset:
@@ -35,4 +34,4 @@ python main.py
 - pcg_gene.csv: the gene information used in our research extracted from https://github.com/Sue-syx/GlaHGCL
 
 ## Contacts
-Any more questions, please do not hesitate to contact us: 20244227040@stu.suda.edu.cn and ljquan@suda.edu.cn.
+Any more questions, please do not hesitate to contact us: [20244227040@stu.suda.edu.cn](mailto:20244227040@stu.suda.edu.cn) and [ljquan@suda.edu.cn](mailto:ljquan@suda.edu.cn).
