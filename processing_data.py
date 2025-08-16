@@ -62,7 +62,7 @@ def graph_split(g_train, d_train, g_fea, d_fea,
 def get_node(relation1, relation2, node1, node2):
     if relation2 is None :
         return np.sort(np.unique(relation1[np.isin(relation1[:, 1], node1), 0])).astype(np.int64)
-    #node_index在第二列
+
     filt1 = relation1[np.isin(relation1[:, 1], node1), 0]
     filt2 = relation2[np.isin(relation2[:, 1], node2), 0]
     return np.sort(np.unique(np.concatenate((filt1, filt2)))).astype(np.int64)
@@ -93,7 +93,7 @@ def split_data(path, splitRate, seed):
     d_d = pd.read_csv('Dataset/dis_adj.csv', header=None).values
     d_d = torch.nonzero(torch.triu(torch.tensor(d_d) > 0), as_tuple=False)
     g_d = pd.read_csv('Dataset/disease_gene_pos.csv').values
-    neg_g_d = pd.read_csv('Dataset/disease_gene_tra_neg.csv').values.astype(int)
+    neg_g_d = np.empty((0, 2), dtype=int)
     g_num, d_num = len(g_fea), len(d_fea)
     gd_net= np.zeros((g_num, d_num))
     gd_net[g_d[:,1].astype(int), g_d[:, 0].astype(int)] = g_d[:, 2]
