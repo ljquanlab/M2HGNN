@@ -1,0 +1,313 @@
+doid,name
+DOID:12236,primary biliary cirrhosis
+DOID:4677,keratitis
+DOID:7188,autoimmune thyroiditis
+DOID:2043,hepatitis B
+DOID:0060061,cutaneous T cell lymphoma
+DOID:3910,lung adenocarcinoma
+DOID:3635,congenital myasthenic syndrome
+DOID:12603,acute leukemia
+DOID:934,viral infectious disease
+DOID:8398,osteoarthritis
+DOID:12705,Friedreich ataxia
+DOID:178,vascular disease
+DOID:3069,astrocytoma
+DOID:1240,leukemia
+DOID:13378,Kawasaki disease
+DOID:13189,gout
+DOID:1793,pancreatic cancer
+DOID:3565,meningioma
+DOID:4448,macular degeneration
+DOID:0050120,hemophagocytic lymphohistiocytosis
+DOID:3275,thymoma
+DOID:1936,atherosclerosis
+DOID:678,progressive supranuclear palsy
+DOID:9415,allergic asthma
+DOID:437,myasthenia gravis
+DOID:9471,meningitis
+DOID:2351,iron metabolism disease
+DOID:0060180,colitis
+DOID:8778,Crohn's disease
+DOID:11727,facioscapulohumeral muscular dystrophy
+DOID:2048,autoimmune hepatitis
+DOID:676,juvenile rheumatoid arthritis
+DOID:2055,post-traumatic stress disorder
+DOID:10159,osteonecrosis
+DOID:3070,malignant glioma
+DOID:2228,thrombocytosis
+DOID:0050745,diffuse large B-cell lymphoma
+DOID:2988,antiphospholipid syndrome
+DOID:13580,cholestasis
+DOID:1485,cystic fibrosis
+DOID:1100,ovarian disease
+DOID:850,lung disease
+DOID:0050749,peripheral T-cell lymphoma
+DOID:341,peripheral vascular disease
+DOID:9352,type 2 diabetes mellitus
+DOID:3602,toxic encephalopathy
+DOID:649,prion disease
+DOID:11722,myotonic dystrophy type 1
+DOID:3146,lipid metabolism disorder
+DOID:633,myositis
+DOID:14227,azoospermia
+DOID:2531,hematologic cancer
+DOID:11720,distal muscular dystrophy
+DOID:0080144,childhood acute lymphocytic leukemia
+DOID:7148,rheumatoid arthritis
+DOID:3962,follicular thyroid carcinoma
+DOID:8552,chronic myeloid leukemia
+DOID:3082,interstitial lung disease
+DOID:4079,heart valve disease
+DOID:693,dental enamel hypoplasia
+DOID:399,tuberculosis
+DOID:127,leiomyoma
+DOID:5844,myocardial infarction
+DOID:2860,hemoglobinopathy
+DOID:3382,liposarcoma
+DOID:7147,ankylosing spondylitis
+DOID:3371,chondrosarcoma
+DOID:1574,alcohol abuse
+DOID:9120,amyloidosis
+DOID:11612,polycystic ovary syndrome
+DOID:11934,head and neck cancer
+DOID:2921,glomerulonephritis
+DOID:0050700,cardiomyopathy
+DOID:2841,asthma
+DOID:11729,Lyme disease
+DOID:12306,vitiligo
+DOID:0050744,anaplastic large cell lymphoma
+DOID:3388,periodontal disease
+DOID:574,peripheral nervous system disease
+DOID:8584,Burkitt lymphoma
+DOID:2987,familial Mediterranean fever
+DOID:363,uterine cancer
+DOID:1312,focal segmental glomerulosclerosis
+DOID:15,reproductive system disease
+DOID:2394,ovarian cancer
+DOID:8893,psoriasis
+DOID:0060058,lymphoma
+DOID:5426,premature ovarian failure
+DOID:11198,DiGeorge syndrome
+DOID:987,alopecia
+DOID:594,panic disorder
+DOID:1781,thyroid cancer
+DOID:1470,major depressive disorder
+DOID:898,polycystic kidney disease
+DOID:2998,testicular cancer
+DOID:1596,mental depression
+DOID:3068,glioblastoma multiforme
+DOID:1749,squamous cell carcinoma
+DOID:0060060,non-Hodgkin lymphoma
+DOID:2913,acute pancreatitis
+DOID:1205,hypersensitivity reaction type I disease
+DOID:6419,tetralogy of Fallot
+DOID:3310,atopic dermatitis
+DOID:37,skin disease
+DOID:1324,lung cancer
+DOID:9119,acute myeloid leukemia
+DOID:3247,rhabdomyosarcoma
+DOID:4481,allergic rhinitis
+DOID:8283,peritonitis
+DOID:0050873,follicular lymphoma
+DOID:263,kidney cancer
+DOID:12347,osteogenesis imperfecta
+DOID:9744,type 1 diabetes mellitus
+DOID:8986,narcolepsy
+DOID:4226,endometrial stromal sarcoma
+DOID:635,acquired immunodeficiency syndrome
+DOID:10003,sensorineural hearing loss
+DOID:3627,aortic aneurysm
+DOID:865,vasculitis
+DOID:6000,congestive heart failure
+DOID:0050855,renal fibrosis
+DOID:9255,frontotemporal dementia
+DOID:8577,ulcerative colitis
+DOID:1926,Gaucher's disease
+DOID:10754,otitis media
+DOID:0050902,medulloblastoma
+DOID:12028,Conn's syndrome
+DOID:8692,myeloid leukemia
+DOID:1024,leprosy
+DOID:14330,Parkinson's disease
+DOID:1184,nephrotic syndrome
+DOID:11054,urinary bladder cancer
+DOID:10825,essential hypertension
+DOID:90,degenerative disc disease
+DOID:9065,leishmaniasis
+DOID:11963,esophagitis
+DOID:4450,renal cell carcinoma
+DOID:2957,pulmonary tuberculosis
+DOID:0060318,acute promyelocytic leukemia
+DOID:3770,pulmonary fibrosis
+DOID:1579,respiratory system disease
+DOID:4362,cervical cancer
+DOID:9477,pulmonary embolism
+DOID:2513,basal cell carcinoma
+DOID:2377,multiple sclerosis
+DOID:0080001,bone disease
+DOID:0050589,inflammatory bowel disease
+DOID:13241,Behcet's disease
+DOID:8469,influenza
+DOID:1612,breast cancer
+DOID:10223,dermatomyositis
+DOID:1270,hereditary hemorrhagic telangiectasia
+DOID:1686,glaucoma
+DOID:8997,polycythemia vera
+DOID:1094,attention deficit hyperactivity disorder
+DOID:10941,intracranial aneurysm
+DOID:3393,coronary artery disease
+DOID:13636,Fanconi's anemia
+DOID:4897,bile duct carcinoma
+DOID:4195,hyperglycemia
+DOID:9408,acute myocardial infarction
+DOID:707,B-cell lymphoma
+DOID:10652,Alzheimer's disease
+DOID:169,neuroendocrine tumor
+DOID:2914,immune system disease
+DOID:184,bone cancer
+DOID:9778,irritable bowel syndrome
+DOID:9261,nasopharynx carcinoma
+DOID:768,retinoblastoma
+DOID:1824,status epilepticus
+DOID:2462,retinal vascular disease
+DOID:9884,muscular dystrophy
+DOID:9588,encephalitis
+DOID:10534,stomach cancer
+DOID:3213,demyelinating disease
+DOID:0050908,myelodysplastic syndrome
+DOID:2237,hepatitis
+DOID:10283,prostate cancer
+DOID:2871,endometrial carcinoma
+DOID:0050866,oral squamous cell carcinoma
+DOID:3905,lung carcinoma
+DOID:2030,anxiety disorder
+DOID:13141,uveitis
+DOID:0050848,obstructive sleep apnea
+DOID:8567,Hodgkin's lymphoma
+DOID:3996,urinary system cancer
+DOID:11476,osteoporosis
+DOID:1682,congenital heart disease
+DOID:3451,skin carcinoma
+DOID:12930,dilated cardiomyopathy
+DOID:3973,thyroid medullary carcinoma
+DOID:0050469,Costello syndrome
+DOID:0060170,generalized epilepsy with febrile seizures plus
+DOID:640,encephalomyelitis
+DOID:612,primary immunodeficiency disease
+DOID:332,amyotrophic lateral sclerosis
+DOID:11723,Duchenne muscular dystrophy
+DOID:14221,metabolic syndrome X
+DOID:9253,gastrointestinal stromal tumor
+DOID:824,periodontitis
+DOID:2355,anemia
+DOID:1924,hypogonadism
+DOID:1920,hyperuricemia
+DOID:3308,embryonal carcinoma
+DOID:0050909,MALT lymphoma
+DOID:0050795,cone dystrophy
+DOID:255,hemangioma
+DOID:1380,endometrial cancer
+DOID:2986,IgA glomerulonephritis
+DOID:5520,head and neck squamous cell carcinoma
+DOID:4947,cholangiocarcinoma
+DOID:0014667,disease of metabolism
+DOID:2321,dyspepsia
+DOID:0050457,Sertoli cell-only syndrome
+DOID:1826,epilepsy syndrome
+DOID:8947,diabetic retinopathy
+DOID:1059,intellectual disability
+DOID:3829,pituitary adenoma
+DOID:4752,multiple system atrophy
+DOID:10126,keratoconus
+DOID:12140,Chagas disease
+DOID:684,hepatocellular carcinoma
+DOID:1440,Machado-Joseph disease
+DOID:12336,male infertility
+DOID:12849,autistic disorder
+DOID:8466,retinal degeneration
+DOID:3963,thyroid carcinoma
+DOID:4159,skin cancer
+DOID:1883,hepatitis C
+DOID:0060224,atrial fibrillation
+DOID:1115,sarcoma
+DOID:1227,neutropenia
+DOID:4971,myelofibrosis
+DOID:769,neuroblastoma
+DOID:12270,coloboma
+DOID:3312,bipolar disorder
+DOID:3883,Lynch syndrome
+DOID:10487,Hirschsprung's disease
+DOID:552,pneumonia
+DOID:8805,intermediate coronary syndrome
+DOID:12361,Graves' disease
+DOID:83,cataract
+DOID:1319,brain cancer
+DOID:9351,diabetes mellitus
+DOID:12858,Huntington's disease
+DOID:289,endometriosis
+DOID:1909,melanoma
+DOID:0050328,congenital hypothyroidism
+DOID:4531,mucoepidermoid carcinoma
+DOID:12271,aniridia
+DOID:326,ischemia
+DOID:2843,long QT syndrome
+DOID:2994,germ cell cancer
+DOID:9452,fatty liver disease
+DOID:1307,dementia
+DOID:3369,peripheral primitive neuroectodermal tumor
+DOID:11830,myopia
+DOID:9074,systemic lupus erythematosus
+DOID:784,chronic kidney failure
+DOID:6713,cerebrovascular disease
+DOID:8712,neurofibromatosis
+DOID:10763,hypertension
+DOID:0060041,autism spectrum disorder
+DOID:418,systemic scleroderma
+DOID:11984,hypertrophic cardiomyopathy
+DOID:10591,pre-eclampsia
+DOID:9008,psoriatic arthritis
+DOID:4977,lymphedema
+DOID:3355,fibrosarcoma
+DOID:5485,synovial sarcoma
+DOID:1993,rectum cancer
+DOID:13533,osteopetrosis
+DOID:3083,chronic obstructive pulmonary disease
+DOID:4074,pancreas adenocarcinoma
+DOID:0050156,idiopathic pulmonary fibrosis
+DOID:9952,acute lymphocytic leukemia
+DOID:10608,celiac disease
+DOID:9970,obesity
+DOID:3458,breast adenocarcinoma
+DOID:1037,lymphoblastic leukemia
+DOID:9182,pemphigus
+DOID:1432,blindness
+DOID:10017,multiple endocrine neoplasia type 1
+DOID:2316,brain ischemia
+DOID:10690,mastitis
+DOID:12449,aplastic anemia
+DOID:6364,migraine
+DOID:11119,Gilles de la Tourette syndrome
+DOID:0050591,tooth agenesis
+DOID:5419,schizophrenia
+DOID:936,brain disease
+DOID:715,T-cell leukemia
+DOID:1040,chronic lymphocytic leukemia
+DOID:8850,salivary gland cancer
+DOID:6432,pulmonary hypertension
+DOID:5223,infertility
+DOID:585,nephrolithiasis
+DOID:8923,skin melanoma
+DOID:9538,multiple myeloma
+DOID:10871,age related macular degeneration
+DOID:848,arthritis
+DOID:1588,thrombocytopenia
+DOID:4001,ovarian carcinoma
+DOID:12377,spinal muscular atrophy
+DOID:11983,Prader-Willi syndrome
+DOID:10584,retinitis pigmentosa
+DOID:3969,papillary thyroid carcinoma
+DOID:5082,liver cirrhosis
+DOID:5517,stomach carcinoma
+DOID:14250,Down syndrome
+DOID:700,mitochondrial metabolism disease
+DOID:1790,malignant mesothelioma
