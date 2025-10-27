@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from processing_data import Structual_SampleNeg, Random_Sampleing
 from torch_geometric.nn import HeteroConv, GATv2Conv, GCNConv
 
-class FGNNHG(nn.Module):
+class M2HGNN(nn.Module):
     def __init__(self, gene_input_size, disease_input_size, g_num, d_num, hidden_size, output_size, num_layers, dropout, heads):
         super().__init__()
 
@@ -36,7 +36,7 @@ class FGNNHG(nn.Module):
         self.loss = nn.BCELoss()
         self.mlp = MLP(output_size*2, 1, dropout)
 
-    def forward(self, graph, pos_edge, neg_edge, G_feanum, D_feanum, device, val_neg_edge, part_g_num, part_d_num, g_g, d_d, fold, seed, random = 0):
+    def forward(self, graph, pos_edge, neg_edge, G_feanum, D_feanum, device):
         # if val_neg_edge is not None:
         #     if random == 0:
         #         neg_edge = Random_Sampleing(part_g_num, part_d_num, pos_edge, val_neg_edge, flag=0)
@@ -48,7 +48,7 @@ class FGNNHG(nn.Module):
         x_dict = graph.x_dict
         x_dict['gene'] = self.g_gate(x_dict['gene'][:, 0:G_feanum], x_dict['gene'][:, G_feanum:])
         x_dict['disease'] = self.d_gate(x_dict['disease'][:, 0:D_feanum], x_dict['disease'][:, D_feanum:])
-        res_x_dict = x_dict
+        res_x_dict = {k: v.clone() for k, v in x_dict.items()}
         res_x_dict['gene'] = self.g_lin(res_x_dict['gene'])
         res_x_dict['disease'] = self.d_lin(res_x_dict['disease'])
 

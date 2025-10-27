@@ -6,7 +6,6 @@ from processing_data import *
 from model import *
 from metrics import *
 from utils import *
-from ranger import Ranger
 import matplotlib.pyplot as plt
 from sklearn.model_selection import KFold
 
@@ -22,17 +21,15 @@ if __name__ == '__main__' :
                         help='Muti Heads')
     parser.add_argument('--gene_input_size', type=int, default=68,
                         help='gene fea num')
-    parser.add_argument('--disease_input_size', type=int, default=1080,
+    parser.add_argument('--disease_input_size', type=int, default=986,
                         help='disease fea num')
-    parser.add_argument('--miRNA_input_size', type=int, default=714,
-                        help='miRNA fea num')
     parser.add_argument('--hidden_dim', type=int, default=256,
                     help='hidden_Channels')
     parser.add_argument('--output_dim', type=int, default=64,
                     help='Output_Channels')
-    parser.add_argument('--dropout', type=float, default=0.30,
+    parser.add_argument('--dropout', type=float, default=0.25,
                     help='dropout')
-    parser.add_argument('--lr', type=float, default= 0.00064)
+    parser.add_argument('--lr', type=float, default= 0.00096)
     parser.add_argument('--weight_decay', type=float, default=0.0006,
                         help='l2 reg')
     parser.add_argument('--seed', type=int,default=2341,
@@ -47,7 +44,6 @@ if __name__ == '__main__' :
     LR = args.lr
     GENE_DIM = args.gene_input_size
     DISEASE_DIM = args.disease_input_size
-    MIRNA_DIM = args.miRNA_input_size
     HIDDEN_DIM = args.hidden_dim
     OUTPUT_DIM = args.output_dim
     DROPOUT = args.dropout
@@ -60,37 +56,37 @@ if __name__ == '__main__' :
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     save_path = "results/My/"
 
-    train_data, test_data, g_num, d_num = split_data(path='Dataset/Data/', splitRate=0.7, seed=SEED)
-    train_graph, train_g_num, train_d_num, g_g, d_d, message_train_edge, train_val_pos_edge, train_neg_edge = graph_constract(train_data, map='Dataset/Data/trainnode_index_map.xlsx', seed=SEED)
-    test_graph, test_g_num, test_d_num, _, _, message_test_edge, test_pos_edge, test_neg_edge = graph_constract(test_data, map='Dataset/Data/testnode_index_map.xlsx', seed=SEED, flag = 0)
-    test_neg_edge = Random_Sampleing(test_g_num, test_d_num, message_test_edge, test_pos_edge, test_neg_edge, 1, SEED)
-    test_edge = pd.DataFrame(test_neg_edge)
-    test_edge.to_csv('Dataset/Data/test_neg_edge.csv', index=False, header=['disease', 'gene'])
-
+    train_dataset = "DisGeNET/"
+    
+    
+    (base_g_fea, base_d_l_fea, gene_adj, disesae_adj, train_d_num, train_g_num,
+     message_dis_gene_assoc, pos_edge, neg_edge
+    ) = load_and_prepare_data(train_dataset, SEED)
+    
     # the code above has created the test data, and wll create 5-cv
-    train_val_neg_edge = Random_Sampleing(train_g_num, train_d_num, message_train_edge, train_val_pos_edge, train_neg_edge, 1 ,SEED)
-    k_fold = KFold(n_splits=5, shuffle=True, random_state=SEED)  
+    k_fold = KFold(n_splits=5, shuffle=True, random_state=SEED)
 
     all_folds_best_val_metrics = []
     all_folds_best_pred = [] # five arrays -> disease gene score
     all_folds_best_dict = []
 
-    for fold, (train_idx, val_idx) in enumerate(k_fold.split(train_val_pos_edge)):
+    for fold, (train_idx, val_idx) in enumerate(k_fold.split(pos_edge)):
         print(f"\n---------- Fold {fold + 1}/{5} ----------")
-        fold_train_pos_edge = train_val_pos_edge[train_idx]
-        fold_train_neg_edge = train_val_neg_edge[train_idx]
-        fold_val_pos_edge = train_val_pos_edge[val_idx]
-        val_neg_edge = train_val_neg_edge[val_idx]
-        pd_train_pos_edge = pd.DataFrame(fold_train_pos_edge)
-        pd_train_pos_edge.to_csv('Dataset/Data/fold_' +  str(fold+1) + 'train_pos_edge.csv', index=False, header=['disease', 'gene'])
-        pd_train_neg_edge = pd.DataFrame(fold_train_neg_edge)
-        pd_train_neg_edge.to_csv('Dataset/Data/fold_' +  str(fold+1) + 'train_neg_edge.csv', index=False, header=['disease', 'gene'])
-        pd_val_pos_edge = pd.DataFrame(fold_val_pos_edge)
-        pd_val_pos_edge.to_csv('Dataset/Data/fold_' +  str(fold+1) + 'val_pos_edge.csv', index=False, header=['disease', 'gene'])
-        pd_val_neg_edge = pd.DataFrame(val_neg_edge)
-        pd_val_neg_edge.to_csv('Dataset/Data/fold_' +  str(fold+1) + 'val_neg_edge.csv', index=False, header=['disease', 'gene'])
+        fold_train_pos_edge = pos_edge[train_idx]
+        fold_train_neg_edge = neg_edge[train_idx]
+        fold_val_pos_edge = pos_edge[val_idx][:, :2].astype(int)
+        val_neg_edge = neg_edge[val_idx]
+        
+        print("Building graph and features for this fold...")
+        
+        train_graph = build_graph_for_fold(
+            base_g_fea, base_d_l_fea, gene_adj, disesae_adj,
+            message_dis_gene_assoc, fold_train_pos_edge,
+            pos_edge, train_g_num, train_d_num
+        )
+        fold_train_pos_edge = pos_edge[train_idx][:, :2].astype(int)
 
-        model = FGNNHG(GENE_DIM, DISEASE_DIM, g_num, d_num, HIDDEN_DIM, OUTPUT_DIM, NUM_LAYERS, DROPOUT, HEADS).to(device)
+        model = M2HGNN(GENE_DIM, DISEASE_DIM, train_g_num, train_d_num, HIDDEN_DIM, OUTPUT_DIM, NUM_LAYERS, DROPOUT, HEADS).to(device)
         optimizer = optim.Adam(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
 
         best_metrics_this_fold = {}
@@ -103,7 +99,7 @@ if __name__ == '__main__' :
             print(f"Fold: {fold + 1}, Epoch: {epoch + 1:03d}", end='\t')
             model.train()
             optimizer.zero_grad()
-            loss, train_pred, target, _, _ = model(train_graph.to(device), fold_train_pos_edge, fold_train_neg_edge, GENE_DIM, DISEASE_DIM, device, np.vstack((val_neg_edge, fold_val_pos_edge)), train_g_num, train_d_num, g_g, d_d, fold, seed=SEED+epoch, random=0)
+            loss, train_pred, target, _, _ = model(train_graph.to(device), fold_train_pos_edge, fold_train_neg_edge, GENE_DIM, DISEASE_DIM, device)
             
             loss.backward()
             optimizer.step()
@@ -120,7 +116,7 @@ if __name__ == '__main__' :
 
             model.eval()
             with torch.no_grad():
-                loss, valid_pred, target, embeddings, x_dict = model.forward(train_graph.to(device), fold_val_pos_edge, val_neg_edge, GENE_DIM, DISEASE_DIM, device, None, None, None, None, None, None, None)
+                loss, valid_pred, target, embeddings, x_dict = model.forward(train_graph.to(device), fold_val_pos_edge, val_neg_edge, GENE_DIM, DISEASE_DIM, device)
                 val_metrics = calculate_metrics(target, valid_pred.detach().cpu().numpy())
                 print("loss_test= {:.4f}".format(loss.detach().cpu().numpy()),
                 "test_auc={:.4f}".format(val_metrics['auc'].item()),
@@ -182,39 +178,3 @@ if __name__ == '__main__' :
             print(f"{metric.upper()}: {avg_val_metrics[metric]:.4f} ± {std_val_metrics[metric]:.4f}")
     else:
         print("No validation metrics were recorded.")
-
-    print(f"\n\n{'='*20} Final Testing on Hold-Out Test Set {'='*20}")
-    all_folds_test_metrics = []
-
-    for fold_idx in range(1, 6):
-        print(f"\n--- Testing with model from Fold {fold_idx} ---")
-        model_path = f"{save_path}best_model_fold_{fold_idx}.pth"
-
-        model = FGNNHG(GENE_DIM, DISEASE_DIM, g_num, d_num, HIDDEN_DIM, OUTPUT_DIM, NUM_LAYERS, DROPOUT, HEADS).to(device)
-        model.load_state_dict(torch.load(model_path))
-        model.eval()
-
-        with torch.no_grad():
-            loss, pred, target, _, _ = model.forward(test_graph.to(device), test_pos_edge, test_neg_edge, GENE_DIM, DISEASE_DIM, device, None, None, None, None, None, None, None)
-            test_metrics = calculate_metrics(target, pred.detach().cpu().numpy())
-            np.save(save_path + 'test_pred.npy', pred.cpu().detach().numpy())
-            np.save(save_path + 'test_truth.npy', np.array(target))
-            
-            print("Test Results -> AUC: {:.4f}, AUPR: {:.4f}, F1: {:.4f}, Accuracy: {:.4f}, Recall: {:.4f}, Precision: {:.4f}".format(
-                test_metrics['auc'].item(),
-                test_metrics['aupr'].item(),
-                test_metrics['f1'].item(),
-                test_metrics['acc'].item(),
-                test_metrics['recall'].item(),
-                test_metrics['precision'].item()
-            ))
-            
-            all_folds_test_metrics.append(test_metrics)
-
-
-    test_metrics_df = pd.DataFrame(all_folds_test_metrics).drop(columns=['fpr', 'tpr', 'precision_vec', 'recall_vec'])
-    avg_test_metrics = test_metrics_df.mean()
-    std_test_metrics = test_metrics_df.std()
-    
-    for metric in avg_test_metrics.index:
-        print(f"{metric.upper()}: {avg_test_metrics[metric]:.4f} ± {std_test_metrics[metric]:.4f}")
